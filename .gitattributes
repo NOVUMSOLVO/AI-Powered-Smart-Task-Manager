@@ -1,0 +1,46 @@
+# NOVUMSOLVO Proprietary Repository Configuration
+# © 2025 NOVUMSOLVO, Inc. All Rights Reserved
+
+# Use Git LFS for binary files and proprietary modules
+*.model filter=lfs diff=lfs merge=lfs -text
+*.bin filter=lfs diff=lfs merge=lfs -text
+*.h5 filter=lfs diff=lfs merge=lfs -text
+*.pkl filter=lfs diff=lfs merge=lfs -text
+*.joblib filter=lfs diff=lfs merge=lfs -text
+*.onnx filter=lfs diff=lfs merge=lfs -text
+
+# Proprietary AI modules (only binary distribution allowed)
+backend/app/ai/models/** filter=lfs diff=lfs merge=lfs -text
+
+# Mark proprietary code files to use custom diff
+backend/app/ai/prioritization.py linguist-generated=true
+backend/app/services/microsoft_graph.py linguist-generated=true
+backend/app/services/google_calendar.py linguist-generated=true
+backend/app/core/** linguist-generated=true
+
+# Apply custom merge driver for core files to prevent accidental merges
+backend/app/ai/*.py merge=proprietary
+backend/app/services/*.py merge=proprietary
+backend/app/core/*.py merge=proprietary
+
+# Normalize line endings
+* text=auto
+
+# Ensure that shell scripts use LF
+*.sh text eol=lf
+
+# Ensure that Windows batch scripts use CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Denote all files that are truly binary and should not be modified
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.eot binary
+*.ttf binary
+*.otf binary
