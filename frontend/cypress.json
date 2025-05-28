@@ -1,0 +1,12 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "viewportWidth": 1280,
+  "viewportHeight": 720,
+  "video": false,
+  "screenshotOnRunFailure": true,
+  "integrationFolder": "cypress/e2e",
+  "testFiles": "**/*.cy.js",
+  "env": {
+    "apiUrl": "http://localhost:8000/api/v1"
+  }
+}

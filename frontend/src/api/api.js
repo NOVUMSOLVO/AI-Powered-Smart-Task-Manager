@@ -1,12 +1,14 @@
 import axios from 'axios';
 
-// Configure axios instance with base URL
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000/api';
+// Configure axios instance with base URL and versioning
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+const API_VERSION = process.env.REACT_APP_API_VERSION || 'v1';
 
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: `${API_BASE_URL}/api/${API_VERSION}`,
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
   }
 });
 
